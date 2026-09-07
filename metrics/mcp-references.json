@@ -234,6 +234,17 @@
     ]
   },
   {
+    "name": "muditmittal/dbui",
+    "url": "https://github.com/muditmittal/dbui",
+    "description": "DBUI — Databricks UI Kit. DuBois design language on shadcn components.",
+    "files": [
+      "research/ux-standards/extracts/patternfly/AI--patternfly-mcp.md",
+      "research/ux-standards/extracts/patternfly/AI--marketplace--marketplace.md",
+      "research/ux-standards/extracts/patternfly/AI--ai.md",
+      "research/ux-standards/extracts/patternfly/releases--release-highlights.md"
+    ]
+  },
+  {
     "name": "opendatahub-io/odh-dashboard",
     "url": "https://github.com/opendatahub-io/odh-dashboard",
     "description": "Dashboard for RedHat OpenShift AI / ODH ",
@@ -274,14 +285,6 @@
     "description": "",
     "files": [
       "BOOKMARKS.md"
-    ]
-  },
-  {
-    "name": "pulp/pulp-ui-2",
-    "url": "https://github.com/pulp/pulp-ui-2",
-    "description": "",
-    "files": [
-      ".mcp.json"
     ]
   },
   {
