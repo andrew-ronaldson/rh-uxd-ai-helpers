@@ -3,7 +3,7 @@ description: >-
   Evaluate uxd-design-handoff component mapping, state enumeration,
   acceptance criteria traceability, and output structure
 
-skill: uxd-workshop:uxd-design-handoff
+skill: uxd-design:uxd-design-handoff
 
 execution:
   mode: case

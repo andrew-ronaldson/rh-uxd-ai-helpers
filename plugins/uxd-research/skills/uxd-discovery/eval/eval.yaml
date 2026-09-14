@@ -2,7 +2,7 @@ name: uxd-discovery-eval
 description: >-
   Evaluate uxd-discovery brief generation, input handling, and output structure
 
-skill: uxd-workshop:uxd-discovery
+skill: uxd-research:uxd-discovery
 
 execution:
   mode: case
