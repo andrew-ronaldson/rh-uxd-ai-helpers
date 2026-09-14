@@ -8,8 +8,6 @@ UXD team tools and skill incubator — prototyping, research, design review, tea
 
 ### Skills
 
-- **UXD Design Handoff** (`/uxd-workshop:uxd-design-handoff`) — Produce an implementation-ready design handoff spec from a validated design.
-- **UXD Discovery** (`/uxd-workshop:uxd-discovery`) — Produce a structured UX discovery brief from a feature request, Jira issue, or problem statement.
 - **UXD Evaluate Design Heuristics** (`/uxd-workshop:uxd-evaluate-design-heuristics`) — Score a design against accessibility, visual hierarchy, content, and state coverage heuristics.
 - **UXD Figma Read** (`/uxd-workshop:uxd-figma-read`) — Retrieve design context from a Figma file.
 - **UXD Prototype Evaluate** (`/uxd-workshop:uxd-prototype-evaluate`) — Evaluate a running prototype against a Jira ticket's acceptance criteria, automatically fix what fails, then run persona-based usability walkthroughs.

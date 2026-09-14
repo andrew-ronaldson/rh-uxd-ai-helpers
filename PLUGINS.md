@@ -7,7 +7,9 @@ Quick reference of all plugins and what they contain. This file is auto-generate
 - [patternfly](#patternfly) — Everything you need for PatternFly development — React components, design guidance, migration, and MCP docs
 - [pf-assist](#pf-assist) — PatternFly skill routing — maps project signals to the right PF sub-skills for compliance, migration, and design audits
 - [uxd-assist](#uxd-assist) — UXD skill routing — discover the right skills for research, design review, and prototyping workflows
+- [uxd-design](#uxd-design) — UX design workflow — Figma context, design evaluation, and implementation handoff
 - [uxd-prototype](#uxd-prototype) — Create UX prototypes from Jira tickets, Figma designs, or feature descriptions
+- [uxd-research](#uxd-research) — UX research pipeline — heuristic evaluation, usability testing, research methodology
 - [uxd-workshop](#uxd-workshop) — UXD team tools and skill incubator — prototyping, research, design review, team workflows
 - [pf-a11y](#pf-a11y) — Accessibility auditing, reporting, and documentation
 - [pf-code-review](#pf-code-review) — Code review and quality — adversarial review, security patterns
@@ -53,6 +55,18 @@ UXD skill routing — discover the right skills for research, design review, and
 
 <br>
 
+### uxd-design
+
+UX design workflow — Figma context, design evaluation, and implementation handoff
+
+<table>
+<tr><th>Skill</th><th>Description</th><th>Eval</th></tr>
+<tr><td nowrap><code>uxd-design-handoff</code></td><td>Produce an implementation-ready design handoff spec from a validated design.</td><td>stable</td></tr>
+</table>
+
+
+<br>
+
 ### uxd-prototype
 
 Create UX prototypes from Jira tickets, Figma designs, or feature descriptions
@@ -65,14 +79,24 @@ Create UX prototypes from Jira tickets, Figma designs, or feature descriptions
 
 <br>
 
+### uxd-research
+
+UX research pipeline — heuristic evaluation, usability testing, research methodology
+
+<table>
+<tr><th>Skill</th><th>Description</th><th>Eval</th></tr>
+<tr><td nowrap><code>uxd-discovery</code></td><td>Produce a structured UX discovery brief from a feature request, Jira issue, or problem statement.</td><td>stable</td></tr>
+</table>
+
+
+<br>
+
 ### uxd-workshop
 
 UXD team tools and skill incubator — prototyping, research, design review, team workflows
 
 <table>
 <tr><th>Skill</th><th>Description</th><th>Eval</th></tr>
-<tr><td nowrap><code>uxd-design-handoff</code></td><td>Produce an implementation-ready design handoff spec from a validated design.</td><td>stable</td></tr>
-<tr><td nowrap><code>uxd-discovery</code></td><td>Produce a structured UX discovery brief from a feature request, Jira issue, or problem statement.</td><td>stable</td></tr>
 <tr><td nowrap><code>uxd-evaluate-design-heuristics</code></td><td>Score a design against accessibility, visual hierarchy, content, and state coverage heuristics.</td><td>—</td></tr>
 <tr><td nowrap><code>uxd-figma-read</code></td><td>Retrieve design context from a Figma file.</td><td>—</td></tr>
 <tr><td nowrap><code>uxd-prototype-evaluate</code></td><td>Evaluate a running prototype against a Jira ticket's acceptance criteria, automatically fix what fails, then run persona-based usability walkthroughs.</td><td>stable</td></tr>
@@ -231,5 +255,5 @@ PatternFly team tools and skill incubation — issue triage, release management,
 
 **Eval coverage**
 
-- Consumer: 27/27 (100%)
-- Workshop: 5/25 (20%)
+- Consumer: 29/29 (100%)
+- Workshop: 3/23 (13%)
