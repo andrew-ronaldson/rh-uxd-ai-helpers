@@ -98,7 +98,7 @@ UXD team tools and skill incubator — prototyping, research, design review, tea
 <table>
 <tr><th>Skill</th><th>Description</th><th>Eval</th></tr>
 <tr><td nowrap><code>uxd-evaluate-design-heuristics</code></td><td>Score a design against accessibility, visual hierarchy, content, and state coverage heuristics.</td><td>—</td></tr>
-<tr><td nowrap><code>uxd-figma-read</code></td><td>Retrieve design context from a Figma file.</td><td>—</td></tr>
+<tr><td nowrap><code>uxd-figma-read</code></td><td>Retrieve design context from a Figma file.</td><td>stable</td></tr>
 <tr><td nowrap><code>uxd-prototype-evaluate</code></td><td>Evaluate a running prototype against a Jira ticket's acceptance criteria, automatically fix what fails, then run persona-based usability walkthroughs.</td><td>stable</td></tr>
 <tr><td nowrap><code>uxd-prototype-export</code></td><td>Export a prototype page or journey step as static HTML, a React component tree, or a PatternFly implementation spec, and install the Prototype Bar (Sources, Prototype|Eval, Scenario, Export).</td><td>—</td></tr>
 <tr><td nowrap><code>uxd-prototype-publish</code></td><td>Publish a prototype to a git merge request, GitHub Pages, GitLab Pages, or Vercel.</td><td>stable</td></tr>
@@ -256,4 +256,4 @@ PatternFly team tools and skill incubation — issue triage, release management,
 **Eval coverage**
 
 - Consumer: 29/29 (100%)
-- Workshop: 3/23 (13%)
+- Workshop: 4/23 (17%)
