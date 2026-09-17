@@ -7,7 +7,7 @@ description: Evaluate pf-catalog-interaction-patterns' interaction-to-component 
 # contributes: correct hover rules (Tooltip only), interaction-indexed component
 # lookup, and multiple valid options for broad queries.
 
-skill: pf-react:pf-catalog-interaction-patterns
+skill: pf-design-guide:pf-catalog-interaction-patterns
 
 execution:
   mode: case
@@ -16,7 +16,7 @@ execution:
 runner:
   type: claude-code
   plugin_dirs:
-    - plugins/patternfly/pf-react
+    - plugins/patternfly/pf-design-guide
 
 models:
   skill: claude-sonnet-4-6
@@ -68,7 +68,7 @@ judges:
     check: |
       import re
       text = outputs.get("conversation", "")
-      expected = annotations.get('expected_components', [])
+      expected = outputs.get("annotations", {}).get('expected_components', [])
       found = []
       for comp in expected:
           if re.search(rf'\b{comp}\b', text, re.IGNORECASE):
@@ -85,7 +85,7 @@ judges:
     check: |
       import re
       text = outputs.get("conversation", "")
-      expected = annotations.get('expected_components', [])
+      expected = outputs.get("annotations", {}).get('expected_components', [])
       found = []
       for comp in expected:
           if re.search(rf'\b{comp}\b', text, re.IGNORECASE):
@@ -100,7 +100,7 @@ judges:
     check: |
       import re
       text = outputs.get("conversation", "")
-      pf_components = re.search(r'@patternfly|PatternFly\s+(component|React)', text)
+      pf_components = re.search(r'@patternfly|PatternFly\s+(component|React)', text, re.IGNORECASE)
       if pf_components:
           return False, "Suggested PatternFly components for a non-PF context"
       return True, "Did not suggest PatternFly components for non-PF context"
