@@ -222,7 +222,7 @@ Present a results table, then reference the correct image path for each ❌ item
 - PatternFly ChatBot Extension: [https://staging.patternfly.org/extensions/chatbot/overview/design-guidelines](https://staging.patternfly.org/extensions/chatbot/overview/design-guidelines)
 - PatternFly Colors: [https://staging.patternfly.org/foundations-and-styles/color](https://staging.patternfly.org/foundations-and-styles/color)
 - Red Hat Design System: [https://ux.redhat.com/](https://ux.redhat.com/)
-- Red Hat Brand Standards: [http://brand.redhat.com/](http://brand.redhat.com/)
+- Red Hat Brand Standards: [https://brand.redhat.com/](http://brand.redhat.com/)
 - `@patternfly/react-icons` package: [https://www.npmjs.com/package/@patternfly/react-icons](https://www.npmjs.com/package/@patternfly/react-icons)
 - Request new icons or animations: #help-brand on Slack
 
