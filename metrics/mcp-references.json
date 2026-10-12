@@ -282,13 +282,11 @@
     ]
   },
   {
-    "name": "muditmittal/dbui",
-    "url": "https://github.com/muditmittal/dbui",
-    "description": "DBUI — Databricks UI Kit. DuBois design language on shadcn components.",
+    "name": "kubev2v/forklift-console-plugin",
+    "url": "https://github.com/kubev2v/forklift-console-plugin",
+    "description": "OpenShift Console Plugin For Forklift, the plugin adds a web based user interface for Migration Toolkit for Virtualization inside Openshift web console.",
     "files": [
-      "research/ux-standards/extracts/patternfly/AI--patternfly-mcp.md",
-      "research/ux-standards/extracts/patternfly/AI--marketplace--marketplace.md",
-      "research/ux-standards/extracts/patternfly/AI--ai.md"
+      ".cursor/rules/agents/ux-reviewer.mdc"
     ]
   },
   {
@@ -364,6 +362,8 @@
     "url": "https://github.com/sudosubin/agents.nix",
     "description": "Nixpkgs overlay for AI agent skills from skills.sh and skillsdirectory.com",
     "files": [
+      "data/claude-code-plugins/github.com/patternfly/ai-helpers.json",
+      "data/claude-code-plugins/github.com/patternfly/ai-helpers.patch",
       "data/claude-code-marketplaces/github.com/patternfly/ai-helpers.json"
     ]
   },
