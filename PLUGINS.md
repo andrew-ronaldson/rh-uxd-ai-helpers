@@ -97,6 +97,7 @@ UXD skill incubator — new skills start here before graduating to consumer plug
 <tr><td nowrap><code>uxd-experience-narrative-create</code></td><td>Turn a problem brief into a scene-by-scene experience a prototype can show.</td><td>—</td></tr>
 <tr><td nowrap><code>uxd-experience-review</code></td><td>Judge whether an experience narrative and prototype carry the framed problem, and draft the stakeholder demo.</td><td>—</td></tr>
 <tr><td nowrap><code>uxd-problem-brief-create</code></td><td>Frame a product problem as a brief: who is affected, the current condition, evidence versus assumptions, and what is in scope.</td><td>—</td></tr>
+<tr><td nowrap><code>uxd-vision-workshop</code></td><td>Guide a team from an evidence-grounded problem through a future-state UX narrative, prototype, and stakeholder review.</td><td>—</td></tr>
 </table>
 
 
@@ -274,7 +275,7 @@ PatternFly team tools and skill incubation — issue triage, release management,
 **Eval coverage**
 
 - Consumer: 44/44 (100%)
-- Workshop: 0/21 (0%)
+- Workshop: 0/22 (0%)
 
 ---
 
@@ -299,6 +300,7 @@ Generated from skill frontmatter and section headings. Token cost is a relative 
 | `uxd-experience-narrative-create` | UX designers | A problem brief, optional time horizon and enabling capabilities, optional target codebase | An experience narrative with a screen breakdown | M |
 | `uxd-experience-review` | UX designers | A problem brief, an experience narrative, and a prototype | A review scorecard, improvement list, and presentation plan | M |
 | `uxd-problem-brief-create` | UX designers and product managers | A problem, feature request, or discovery brief, plus optional evidence | A problem brief in markdown | M |
+| `uxd-vision-workshop` | UX designers, product managers, and engineering partners | A product area or problem, available user evidence, and optionally a target prototype workspace | A problem brief, experience narrative, interactive prototype, and review plan | L |
 | `pf-a11y-audit` | PatternFly designers and developers | Task context | Per finding: [ERRORWARNINFO] file/path.tsx:42 — description (WCAG X.X.X) Found: what was dete... | L |
 | `pf-a11y-keyboard` | PatternFly designers and developers | Source Required Description URL Yes URL to a running application (localhost or deployed) Focu... | Structured result | L |
 | `pf-a11y-test-gen` | PatternFly designers and developers | Source Required Description Component/module file Yes Path to the component or UI module to g... | Structured result | L |
