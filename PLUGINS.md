@@ -81,6 +81,7 @@ UX research pipeline — heuristic evaluation, usability testing, research metho
 <table>
 <tr><th>Skill</th><th>Description</th><th>Eval</th></tr>
 <tr><td nowrap><code>uxd-discovery</code></td><td>Produce a structured UX discovery brief from a feature request, Jira issue, or problem statement.</td><td>stable</td></tr>
+<tr><td nowrap><code>uxd-evaluate-code-heuristics</code></td><td>Evaluate code changes against UX heuristics — state coverage, content quality, destructive action safety, and accessibility.</td><td>stable</td></tr>
 <tr><td nowrap><code>uxd-evaluate-design-heuristics</code></td><td>Score a design against accessibility, visual hierarchy, content, and state coverage heuristics.</td><td>stable</td></tr>
 <tr><td nowrap><code>uxd-research-heuristic-eval</code></td><td>Conduct a heuristic evaluation of a prototype or interface using three independent expert evaluators.</td><td>stable</td></tr>
 </table>
@@ -274,7 +275,7 @@ PatternFly team tools and skill incubation — issue triage, release management,
 
 **Eval coverage**
 
-- Consumer: 44/44 (100%)
+- Consumer: 45/45 (100%)
 - Workshop: 0/22 (0%)
 
 ---
@@ -295,6 +296,7 @@ Generated from skill frontmatter and section headings. Token cost is a relative 
 | `uxd-prototype-export` | UXD practitioners | Input Required Source What to export (current page, journey batch, or install bar) Yes User; ... | Under .artifacts/{ID}/exports/ unless --out is set: Output Description index.html + export-ma... | L |
 | `uxd-prototype-publish` | UXD practitioners | Input Source Required Prototype files .artifacts/{ID}/prototype/ or workspace files Yes metad... | Output Description Published prototype GitLab MR, GitHub Pages, GitLab Pages, or Vercel URL U... | L |
 | `uxd-discovery` | UXD practitioners | Input Type Required Default Problem source Jira issue key/URL, feature description, or proble... | Output Format Description Discovery brief Structured markdown Problem statement, user groups,... | M |
+| `uxd-evaluate-code-heuristics` | UXD practitioners | The caller provides code to review: a diff, a set of changed files, or a directory. The skill... | Structured result | M |
 | `uxd-evaluate-design-heuristics` | UXD practitioners | The skill expects one or more of the following, provided by the user or by an upstream skill:... | Given the required inputs, this skill produces: Verdict — Pass or Fail. Any dimension scoring... | L |
 | `uxd-research-heuristic-eval` | UXD practitioners | Input Type Required Default Interface to evaluate Screenshots, image files, text descriptions... | Output Format Location Evaluation report .md and .html [project-dir]/heuristic-eval-[date].[ext] | XL |
 | `uxd-experience-narrative-create` | UX designers | A problem brief, optional time horizon and enabling capabilities, optional target codebase | An experience narrative with a screen breakdown | M |
