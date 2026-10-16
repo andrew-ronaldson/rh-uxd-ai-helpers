@@ -33,6 +33,11 @@ cross-repository issue-creation targets.
   directly.
 - Keep the local review skill aligned with changes to contribution and
   governance documents.
-- Refresh dependency pins with `fullsend lock --all --fullsend-dir .fullsend`.
+- `update-fullsend-review.yml` checks monthly and can be run manually to open a
+  maintenance PR when the upstream review harness changes. It updates the
+  pinned `base:` commit and hash, then regenerates `lock.yaml`.
+- Refresh the lockfile manually with
+  `fullsend lock --all --update --fullsend-dir .fullsend` after intentionally
+  changing the pinned upstream harness.
 - Fullsend findings are advisory. Whether the review is a required merge check
   is controlled by repository branch protection.
