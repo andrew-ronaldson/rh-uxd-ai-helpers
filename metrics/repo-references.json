@@ -33,6 +33,14 @@
     ]
   },
   {
+    "name": "jaquevan/agent-skills",
+    "url": "https://github.com/jaquevan/agent-skills",
+    "description": "",
+    "files": [
+      "skills/sprint-manager/reference.md"
+    ]
+  },
+  {
     "name": "kosif199022-jpg/100-superskills",
     "url": "https://github.com/kosif199022-jpg/100-superskills",
     "description": "100 مهارة خارقة — 100 Super Skills for Claude & ChatGPT, composed from the KOSIF Atlas (15,122 skills): Claude-made animation, image/video prompt forges, Prompt Master Pro, Excel/Word, web design, programming",
