@@ -31,7 +31,7 @@ PatternFly skills live under `plugins/patternfly/` and use the `pf-` prefix. You
 2. Create your skill: `make scaffold PLUGIN=pf-react SKILL=pf-my-skill`
 3. Edit the generated `SKILL.md` — see [CONTRIBUTING-SKILLS.md](CONTRIBUTING-SKILLS.md) for the full guide
 4. Test locally: invoke `/pf-react:pf-my-skill` on a real scenario
-5. Run `make validate` to check consistency
+5. Run `make validate` to check manifests, skills, agents, and eval configuration
 6. Open a pull request
 
 PRs are reviewed by the plugin's code owner (see [CODEOWNERS](.github/CODEOWNERS)). See [GOVERNANCE.md](GOVERNANCE.md) for the review process.

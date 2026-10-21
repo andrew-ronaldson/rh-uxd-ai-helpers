@@ -299,7 +299,7 @@ Once you're happy with the skill:
 2. Copy your `SKILL.md` into the appropriate plugin's `skills/` directory:
    - PatternFly: `plugins/patternfly/react/skills/your-skill-name/SKILL.md`
    - UXD: `plugins/<uxd-plugin>/skills/your-skill-name/SKILL.md`
-3. Run `make validate` to check manifests, skills, and agents
+3. Run `make validate` to check manifests, skills, agents, and eval configuration
 4. Open a pull request
 
 Your skill becomes available as `/<plugin-name>:your-skill-name` for anyone who installs the plugin.
