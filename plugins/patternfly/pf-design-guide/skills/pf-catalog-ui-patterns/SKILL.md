@@ -50,11 +50,13 @@ The catalog lives in `references/pattern-catalog.md`, organized by category mirr
 
 ## Workflow
 
-1. Match the described need to a category — and, once populated, a specific entry — in `references/pattern-catalog.md`.
+1. Match the described need to a category — and, once populated, a specific entry — in `references/pattern-catalog.md`. A single request can contain more than one need (e.g., a table plus a destructive action on its rows) — match each piece independently rather than forcing the whole request into one bucket.
 2. **Entry found:** present that pattern's composition as what will be built, using the output format below. This is the default, not a proposal.
-3. **User asks to deviate:** apply their instruction, but explicitly name the pattern and the specific deviation per the "Never swap silently" rule above.
-4. **No entry or empty category:** state that no cataloged pattern applies, then fall back to component-level guidance (`pf-catalog-interaction-patterns`, `pf-coding-standards`, or PatternFly MCP) to assemble a composition.
-5. **User disputes the match:** discuss the fit. Once they confirm a deviation or a fully custom approach, proceed with it while still naming what default was overridden.
+3. **Entry has multiple variants and the description doesn't fully specify which applies:** pick the more conservative/protective variant (the stricter severity tier, the safer behavior) and state that choice as an explicit assumption rather than a silent guess — an unstated pick is still a silent substitution under the "Never swap silently" rule. Don't block on asking first; state the assumption and keep going, inviting correction.
+4. **User asks to deviate:** apply their instruction, but explicitly name the pattern and the specific deviation per the "Never swap silently" rule above.
+5. **No entry or empty category:** state that no cataloged pattern applies, then fall back to component-level guidance (`pf-catalog-interaction-patterns`, `pf-coding-standards`, or PatternFly MCP) to assemble a composition.
+6. **Composite need — part matches, part doesn't:** apply steps 2–5 to each piece independently in the same response (see the composite example in Output format below). Don't force a multi-part request into a single template, and don't let an unmatched part block presenting the part that did match.
+7. **User disputes the match:** discuss the fit. Once they confirm a deviation or a fully custom approach, proceed with it while still naming what default was overridden.
 
 ## Output format
 
@@ -86,6 +88,36 @@ When nothing in the catalog matches:
 
 ```
 No cataloged PatternFly pattern matches this need yet. Falling back to component-level guidance to assemble a composition.
+```
+
+When the matched entry has variants the description doesn't fully pin down, name the assumed variant in the same template instead of silently picking one:
+
+```
+## Using the [Pattern name] pattern (PatternFly default)
+
+This need matches PatternFly's [Pattern name] pattern. Building with:
+- [Component A] — [role in the composition]
+- [Component B] — [role in the composition]
+
+Assuming [variant] since the description didn't specify — tell me if that's wrong.
+
+[Composition skeleton]
+
+This is the default PatternFly approach for this need — tell me if you need to adapt it.
+```
+
+When the request is composite — part of it matches a cataloged entry, part doesn't — combine the matched-entry and no-match templates in one response instead of forcing the whole thing into either:
+
+```
+## Using the [Pattern name] pattern (PatternFly default)
+
+This need matches PatternFly's [Pattern name] pattern for [the matching part]. Building with:
+- [Component A] — [role in the composition]
+
+[Composition skeleton]
+
+[The non-matching part] has no cataloged PatternFly pattern yet — building it with standard
+component-level composition instead.
 ```
 
 ## Contributing patterns
