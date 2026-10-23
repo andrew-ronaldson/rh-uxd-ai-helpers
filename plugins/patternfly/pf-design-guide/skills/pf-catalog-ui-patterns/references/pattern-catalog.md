@@ -52,6 +52,15 @@ Each pattern entry must include all of the following fields:
 - **Provenance**:
 ```
 
+## When to split this file
+
+This file currently holds the entry schema and every cataloged pattern inline. That's fine while entries are sparse — don't split preemptively. Split once either:
+
+- This file exceeds roughly 400–500 lines (the same soft ceiling `validate-skills.sh` hard-enforces on `SKILL.md`), or
+- Any single category accumulates 2+ full entries.
+
+When that threshold hits, split **by category**, not by extracting code out of entries — follow the precedent in `pf-component-check`'s `references/*.md` files (one file per family, plus a thin routing table in `SKILL.md`). Keep each entry's schema fields and `Composition` code together in the same file; the code is governed by that entry's own `Variants` table (e.g., `severity.icon`, `requiresCheckbox`), so separating them risks the two drifting out of sync silently. Move each category's full entries into its own `references/<category>.md` file, then replace the inline `## Categories` section below with a thin index table: `Pattern name | Category | Problem it solves | File` — the "Problem it solves" column is what matching already runs against, so the index alone stays enough to match a need without opening an entry file.
+
 ## Categories
 
 Categories mirror `patternfly://docs/patterns`. Add new categories here as PatternFly publishes more patterns, or as this catalog deliberately expands beyond PatternFly's official pattern pages (e.g., wizards, empty states) — see [Contributing patterns](../SKILL.md#contributing-patterns) in the skill file before adding anything that isn't sourced from PatternFly's own docs.
@@ -105,8 +114,46 @@ Sourced from PatternFly's [Modal design guidelines](https://www.patternfly.org/c
 
 - **Problem it solves**: Before a user deletes, removes, disables, or otherwise acts on a resource with real consequences, confirm the action and communicate what will happen — scaled to how severe and reversible the action is.
 - **Trigger phrases**: "confirm before deleting", "are you sure modal", "delete confirmation", "warn the user before removing/disabling X", "make the user acknowledge this is permanent"
-- **Required components**: `Modal` (`ModalHeader`, `ModalBody`, `ModalFooter`) with `titleIconVariant`; `Button` for Confirm/Cancel; `Checkbox` for the acknowledgment step on permanent deletes; `List`/`ListItem` (or `DescriptionList`) with `Badge` counts to enumerate affected downstream resources on cascade/ripple deletes.
+- **Required components**: `WarningModal` (from `@patternfly/react-component-groups`) as the default — it wraps `Modal` and accepts all of `Modal`'s own props, so nothing below is lost, while also layering Confirm/Cancel wiring, button variant, and the checkbox-or-typed-confirmation safeguard on top so none of that needs hand-rolling; `List`/`ListItem` (or `DescriptionList`) with `Badge` counts, passed as `WarningModal`'s `children`, to enumerate affected downstream resources on cascade/ripple deletes. **Fallback**, only for codebases not already depending on `@patternfly/react-component-groups`: hand-roll from `Modal` (`ModalHeader`, `ModalBody`, `ModalFooter`), `Button`, and `Checkbox` directly — see the fallback composition below. Choosing the fallback over the default is a deviation to flag per the skill's default-first policy (state the reason, e.g., avoiding the extra dependency), not a silent substitution.
 - **Composition**:
+
+  ```tsx
+  <WarningModal
+    variant="small"
+    isOpen={isOpen}
+    title={headline}
+    titleIconVariant={severity.icon}
+    confirmButtonLabel={confirmLabel}
+    confirmButtonVariant={severity.buttonVariant}
+    cancelButtonLabel="Cancel"
+    onConfirm={onConfirm}
+    onClose={onClose}
+    // Permanent/irreversible, lower blast radius
+    withCheckbox={requiresCheckbox}
+    checkboxLabel={acknowledgementLabel}
+    // Permanent/irreversible, high blast radius — use instead of withCheckbox, not alongside it
+    confirmationInputProps={requiresTypedConfirmation ? { type: 'text', isRequired: true } : undefined}
+    confirmationText={requiresTypedConfirmation ? resourceName : undefined}
+  >
+    {bodyText}
+
+    {/* Cascade/ripple only */}
+    {affectedResources.length > 0 && (
+      <>
+        <Content component="h4">{affectedHeading}</Content>
+        <List isPlain>
+          {affectedResources.map((r) => (
+            <ListItem key={r.type}>
+              {r.label} <Badge isRead>{r.count}</Badge>
+            </ListItem>
+          ))}
+        </List>
+      </>
+    )}
+  </WarningModal>
+  ```
+
+  Fallback composition (no `@patternfly/react-component-groups` dependency) — same required behavior, hand-rolled from `Modal` primitives:
 
   ```tsx
   <Modal variant="small" titleIconVariant={severity.icon} onClose={onClose}>
@@ -128,8 +175,8 @@ Sourced from PatternFly's [Modal design guidelines](https://www.patternfly.org/c
         </>
       )}
 
-      {/* Permanent/irreversible delete only */}
-      {requiresAcknowledgement && (
+      {/* Permanent/irreversible, lower blast radius only */}
+      {requiresCheckbox && (
         <Checkbox
           id="confirm-delete"
           label={acknowledgementLabel}
@@ -137,11 +184,21 @@ Sourced from PatternFly's [Modal design guidelines](https://www.patternfly.org/c
           onChange={(_e, isChecked) => setChecked(isChecked)}
         />
       )}
+
+      {/* Permanent/irreversible, high blast radius only — in place of the checkbox above */}
+      {requiresTypedConfirmation && (
+        <TextInput
+          id="confirm-delete-text"
+          value={typedValue}
+          onChange={(_e, value) => setTypedValue(value)}
+          placeholder={resourceName}
+        />
+      )}
     </ModalBody>
     <ModalFooter>
       <Button
         variant={severity.buttonVariant}
-        isDisabled={requiresAcknowledgement && !checked}
+        isDisabled={(requiresCheckbox && !checked) || (requiresTypedConfirmation && typedValue !== resourceName)}
         onClick={onConfirm}
       >
         {confirmLabel}
@@ -155,13 +212,14 @@ Sourced from PatternFly's [Modal design guidelines](https://www.patternfly.org/c
 
 - **Variants**:
 
-  Severity (from PatternFly's "Confirm a destructive action" guidance):
+  Severity and safeguard (from PatternFly's "Confirm a destructive action" guidance, plus `WarningModal`'s own built-in safeguard mechanisms):
 
-  | Severity | When | Title icon | Confirm button | Checkbox |
+  | Severity | When | Title icon | Confirm button | Safeguard |
   |---|---|---|---|---|
-  | Non-destructive / reversible | Disabling, unassigning, canceling | None | `primary` | No |
-  | Destructive but reversible | Removing something risky to lose track of | `warning` | `danger` | No |
-  | Permanent / irreversible | Hard delete | `warning` | `danger` | Required — Confirm button stays disabled until checked |
+  | Non-destructive / reversible | Disabling, unassigning, canceling | None | `primary` | None |
+  | Destructive but reversible | Removing something risky to lose track of | `warning` | `danger` | None |
+  | Permanent / irreversible | Hard delete | `warning` | `danger` | Checkbox (`withCheckbox` + `checkboxLabel`) — Confirm stays disabled until checked |
+  | Permanent / irreversible, high blast radius | Deleting something that cascades broadly, or affects other users/environments (e.g., a production environment, an entire account) | `warning` | `danger` | Typed confirmation (`confirmationInputProps` + `confirmationText`) instead of a checkbox — a checkbox is too easy to dismiss without reading at this blast radius |
 
   Downstream-impact (orthogonal to severity — combine as needed):
 
@@ -171,18 +229,18 @@ Sourced from PatternFly's [Modal design guidelines](https://www.patternfly.org/c
   - A resource can be both cascade and ripple at once — show both lists.
 
 - **Do not deviate on**:
-  - The checkbox-gated Confirm button for permanent/irreversible deletes — don't let users skip acknowledgement on a hard delete.
+  - The checkbox-gated Confirm button for permanent/irreversible deletes, or typed-confirmation-gated for high-blast-radius ones — don't let users skip the safeguard on a hard delete, and don't use both safeguards at once (pick one per the severity table).
   - `titleIconVariant="warning"` on any destructive confirmation — irreversible actions must be visually flagged per PatternFly's guidance.
-  - `danger` button variant for destructive confirms.
+  - `danger` confirm button variant (`confirmButtonVariant` on `WarningModal`, or the `Button` `variant` on the fallback) for destructive confirms.
   - Naming the specific downstream resources/counts on cascade or ripple deletes — a bare "Are you sure?" is insufficient once other resources are affected.
 - **Adaptable by default**:
   - Exact headline/body copy, as long as the action verb stays consistent with the triggering button (per PatternFly's content guidance).
   - Modal size — `small` is typical; use `medium` if body content needs more room (e.g., long affected-resource lists).
   - Whether impact is shown as a list with badge counts vs. plain descriptive text, when counts aren't available.
-- **Source**: PatternFly [Modal design guidelines](https://www.patternfly.org/components/modal/design-guidelines) → "Confirmation modals" (`patternfly://docs/modal`). The same severity/checkbox composition is also available pre-built as `WarningModal` from `@patternfly/react-component-groups` (`withCheckbox`, `checkboxLabel`, `confirmButtonVariant` props) for teams that prefer not to hand-roll from `Modal` primitives — note this as a deviation from the primitive composition above if used instead, since it changes the required-components list.
+- **Source**: PatternFly [Modal design guidelines](https://www.patternfly.org/components/modal/design-guidelines) → "Confirmation modals" (`patternfly://docs/modal`) for the severity/icon/button guidance. The default composition itself is sourced from `WarningModal`'s own docs (`@patternfly/react-component-groups`, `patternfly://docs/extensionscomponentgroupswarningmodal`), confirmed live: it explicitly documents accepting all `Modal` props plus `withCheckbox`/`checkboxLabel` and `confirmationInputProps`/`confirmationText` as its two safeguard mechanisms — which is also what resolved this entry's earlier open "`Modal` vs. `WarningModal`" question in `WarningModal`'s favor as the default, not just an alternative.
 - **Provenance**: Observed in Syntara's `frontend-patternfly-ux` skill (confirmation-modal section, originally built on a custom `SynConfirmationDialog`). This is currently the only confirmed source — not yet validated against other products. Upstream status: not proposed (see `/tmp/patternfly-modal-confirmation-contribution-draft.md` for a drafted, not-yet-submitted proposal covering the severity/checkbox guidance). If this composition turns up independently in another product, update this field rather than assuming it already applies broadly.
 
-  **Why this entry still earns its place even if parts of it get upstreamed:** The icon/button-variant-by-severity row and "use a safeguard step for permanent deletes" are generalizable PatternFly guidance worth contributing upstream (PatternFly's own Modal docs already gesture at this loosely). But the three-tier severity *naming*, the cascade/ripple downstream-impact taxonomy, and the choice of raw `Modal` vs. `WarningModal` as this codebase's standard are product-specific conventions layered on top of PatternFly's intentionally general, multi-valid-approach guidance — PatternFly's docs shouldn't (and realistically wouldn't) mandate one taxonomy for every consumer. Docs are reference material someone has to rediscover and choose to apply each time; this entry is what makes applying it the default instead of optional. If PatternFly's docs ever grow to fully specify the severity/impact taxonomy as one ready recipe, re-run this entry through the [synthesis test](#before-adding-an-entry-the-synthesis-test) — it may by then qualify for the same removal `pf-catalog-ui-patterns` gave the "Empty state selection" entry.
+  **Why this entry still earns its place even if parts of it get upstreamed:** The icon/button-variant-by-severity row and "use a safeguard step for permanent deletes" are generalizable PatternFly guidance worth contributing upstream (PatternFly's own Modal docs already gesture at this loosely). But the three-tier severity *naming*, the cascade/ripple downstream-impact taxonomy, and the high-blast-radius-vs-checkbox distinction are product-specific conventions layered on top of PatternFly's intentionally general, multi-valid-approach guidance — PatternFly's docs shouldn't (and realistically wouldn't) mandate one taxonomy for every consumer. Docs are reference material someone has to rediscover and choose to apply each time; this entry is what makes applying it the default instead of optional. If PatternFly's docs ever grow to fully specify the severity/impact taxonomy as one ready recipe, re-run this entry through the [synthesis test](#before-adding-an-entry-the-synthesis-test) — it may by then qualify for the same removal `pf-catalog-ui-patterns` gave the "Empty state selection" entry.
 
 <!--
 Considered and deliberately NOT added: "Empty state selection" (EmptyState icon/status/variant-per-scenario

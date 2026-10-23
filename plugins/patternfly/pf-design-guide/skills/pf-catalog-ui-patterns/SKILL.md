@@ -15,7 +15,7 @@ description: >-
 
 # PatternFly UI Pattern Catalog
 
-PatternFly documents **patterns**: reusable, best-practice compositions of multiple components that solve one recurring UI problem (for example, bulk selection, filters, dashboards, primary-detail views). This skill operates one level above component- and interaction-level guidance — it answers "what's the standard way to build this whole feature?" instead of "which component do I use?" (see `pf-catalog-interaction-patterns`) or "how do I style this component?" (see `pf-coding-standards`).
+PatternFly documents **patterns**: reusable, best-practice compositions of multiple components that solve one recurring UI problem (for example, bulk selection, filters, dashboards, primary-detail views). This skill operates one level above component - and interaction-level guidance — it answers "what's the standard way to build this whole feature?" instead of "which component do I use?" (see `pf-catalog-interaction-patterns`) or "how do I style this component?" (see `pf-coding-standards`).
 
 ## Status: early draft
 
