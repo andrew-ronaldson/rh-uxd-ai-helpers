@@ -42,8 +42,7 @@
       "README.md",
       "packages/ds-patternfly/src/examples/README.md",
       "packages/ds-patternfly/src/stories/ai/MCP.stories.tsx",
-      "package.json",
-      "pnpm-lock.yaml"
+      "package.json"
     ]
   },
   {
@@ -150,6 +149,14 @@
     ]
   },
   {
+    "name": "RedHatInsights/nxtcm-ui-agent",
+    "url": "https://github.com/RedHatInsights/nxtcm-ui-agent",
+    "description": "",
+    "files": [
+      "instance/renovate-config/agent/instance.yaml"
+    ]
+  },
+  {
     "name": "RedHatInsights/obsint-processing-ai-bot-instance",
     "url": "https://github.com/RedHatInsights/obsint-processing-ai-bot-instance",
     "description": "",
@@ -251,6 +258,14 @@
     ]
   },
   {
+    "name": "jscotka/cockpit_plugin_ai",
+    "url": "https://github.com/jscotka/cockpit_plugin_ai",
+    "description": "",
+    "files": [
+      "opencode.json"
+    ]
+  },
+  {
     "name": "konflux-ci/konflux-ci.github.io",
     "url": "https://github.com/konflux-ci/konflux-ci.github.io",
     "description": "",
@@ -282,13 +297,11 @@
     ]
   },
   {
-    "name": "muditmittal/dbui",
-    "url": "https://github.com/muditmittal/dbui",
-    "description": "DBUI — Databricks UI Kit. DuBois design language on shadcn components.",
+    "name": "kubev2v/forklift-console-plugin",
+    "url": "https://github.com/kubev2v/forklift-console-plugin",
+    "description": "OpenShift Console Plugin For Forklift, the plugin adds a web based user interface for Migration Toolkit for Virtualization inside Openshift web console.",
     "files": [
-      "research/ux-standards/extracts/patternfly/AI--patternfly-mcp.md",
-      "research/ux-standards/extracts/patternfly/AI--marketplace--marketplace.md",
-      "research/ux-standards/extracts/patternfly/AI--ai.md"
+      ".cursor/rules/agents/ux-reviewer.mdc"
     ]
   },
   {
@@ -364,6 +377,8 @@
     "url": "https://github.com/sudosubin/agents.nix",
     "description": "Nixpkgs overlay for AI agent skills from skills.sh and skillsdirectory.com",
     "files": [
+      "data/claude-code-plugins/github.com/patternfly/ai-helpers.json",
+      "data/claude-code-plugins/github.com/patternfly/ai-helpers.patch",
       "data/claude-code-marketplaces/github.com/patternfly/ai-helpers.json"
     ]
   },

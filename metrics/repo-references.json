@@ -24,6 +24,23 @@
     ]
   },
   {
+    "name": "flightctl/ai-workflows",
+    "url": "https://github.com/flightctl/ai-workflows",
+    "description": "Reusable AI workflows a team member can install globally or per-project, in any environment: Cursor, Claude Code and others.",
+    "files": [
+      "ux-design/README.md",
+      "install.sh"
+    ]
+  },
+  {
+    "name": "jaquevan/agent-skills",
+    "url": "https://github.com/jaquevan/agent-skills",
+    "description": "",
+    "files": [
+      "skills/sprint-manager/reference.md"
+    ]
+  },
+  {
     "name": "kosif199022-jpg/100-superskills",
     "url": "https://github.com/kosif199022-jpg/100-superskills",
     "description": "100 مهارة خارقة — 100 Super Skills for Claude & ChatGPT, composed from the KOSIF Atlas (15,122 skills): Claude-made animation, image/video prompt forges, Prompt Master Pro, Excel/Word, web design, programming",
@@ -56,16 +73,6 @@
       "skills/2998-patternfly/12791-pf-figma-diff/references/troubleshooting.md",
       "skills/3006-pf-workshop/12841-pf-figma-diff/references/troubleshooting.md",
       "skills/3011-uxd-research/12864-uxd-research-heuristic-eval/references/report-templates.md"
-    ]
-  },
-  {
-    "name": "muditmittal/dbui",
-    "url": "https://github.com/muditmittal/dbui",
-    "description": "DBUI — Databricks UI Kit. DuBois design language on shadcn components.",
-    "files": [
-      "research/ux-standards/extracts/patternfly/AI--marketplace--marketplace.md",
-      "research/ux-standards/extracts/patternfly/AI--rapid-prototyping--enhancing-existing-projects.md",
-      "research/ux-standards/extracts/patternfly/AI--rapid-prototyping--new-prototypes.md"
     ]
   },
   {
@@ -131,7 +138,6 @@
     "url": "https://github.com/sudosubin/agents.nix",
     "description": "Nixpkgs overlay for AI agent skills from skills.sh and skillsdirectory.com",
     "files": [
-      "data/claude-code-marketplaces/github.com/openshift-eng/ai-helpers.json",
       "data/codex-marketplaces/github.com/opendatahub-io/skills-registry.json"
     ]
   }

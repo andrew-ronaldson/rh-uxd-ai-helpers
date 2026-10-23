@@ -1,7 +1,7 @@
 [
   {
-    "name": "flightctl/ai-workflows",
-    "url": "https://github.com/flightctl/ai-workflows/pull/102",
-    "description": "UXDOPS-2843: Add /ux-design workflow for UX design and implementation handoff"
+    "name": "fullsend-ai/agents",
+    "url": "https://github.com/fullsend-ai/agents/pull/1632",
+    "description": "feat(review): add user-experience review dimension"
   }
 ]
