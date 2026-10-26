@@ -34,7 +34,7 @@ Severity describes user impact, not whether a tool emitted an error:
 - **Moderate** — degrades access but a reasonable workaround exists
 - **Minor** — causes limited friction or affects a secondary experience
 
-Preserve axe impact when the finding comes from axe. For keyboard reports, map `Critical` directly, assess whether `Major` is serious or moderate from task impact, and map `Minor` directly. Source-audit `ERROR`, `WARN`, and `INFO` are finding classifications, not impact levels; assess impact separately when consolidating.
+Preserve axe impact when the finding comes from axe. For keyboard reports, impact values already use the normalized scale (`Critical`, `Serious`, `Moderate`, `Minor`) and can be preserved directly. Source-audit `ERROR`, `WARN`, and `INFO` are finding classifications, not impact levels; assess impact separately when consolidating.
 
 Product priority is intentionally separate. A downstream team may map impact to its tracker priorities using product risk, prevalence, and release context.
 
