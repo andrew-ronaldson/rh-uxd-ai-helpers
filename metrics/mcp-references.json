@@ -46,14 +46,6 @@
     ]
   },
   {
-    "name": "Hyperkid123/nxtcm-ui-agent",
-    "url": "https://github.com/Hyperkid123/nxtcm-ui-agent",
-    "description": "",
-    "files": [
-      "instance/ui-config/agent/instance.yaml"
-    ]
-  },
-  {
     "name": "Joey629/Snappi",
     "url": "https://github.com/Joey629/Snappi",
     "description": "",
@@ -153,6 +145,7 @@
     "url": "https://github.com/RedHatInsights/nxtcm-ui-agent",
     "description": "",
     "files": [
+      "instance/ui-config/agent/instance.yaml",
       "instance/renovate-config/agent/instance.yaml"
     ]
   },
@@ -229,6 +222,7 @@
     "url": "https://github.com/fleetshift/fleetshift-bot-instance",
     "description": "",
     "files": [
+      "README.md",
       "instance/fleetshift-config/agent/instance.yaml"
     ]
   },
@@ -301,7 +295,9 @@
     "url": "https://github.com/kubev2v/forklift-console-plugin",
     "description": "OpenShift Console Plugin For Forklift, the plugin adds a web based user interface for Migration Toolkit for Virtualization inside Openshift web console.",
     "files": [
-      ".cursor/rules/agents/ux-reviewer.mdc"
+      ".agents/rules/agents/ux-reviewer.md",
+      ".codex/config.toml",
+      "scripts/agent-rules/validate.mjs"
     ]
   },
   {
